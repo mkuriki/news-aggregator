@@ -1,0 +1,7 @@
+<% @articles.each do |a| %>
+  <div class="article">
+    <h3><%= a['title'] %></h3>
+    <p><%= a['description'] %></p>
+    <a href="<%= a['url'] %>" target="new">Read Full Article</a>
+  </div>
+<% end %>

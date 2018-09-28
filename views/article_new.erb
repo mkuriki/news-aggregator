@@ -1,0 +1,30 @@
+<%
+error_str = ''
+if @errors.any?
+  @errors.each do |k, v|
+    error_str += "- #{v}<br />"
+  end
+end
+%>
+
+<% if error_str != '' %>
+  <p class="required">Please fill out the following required field(s):<br />
+    <%=error_str%>
+  </p>
+<% end%>
+
+<div id="new_article">
+  <h3>Article</h3>
+  <p><span class="required">*</span> Required Field</p>
+
+  <form action="/articles/new_post" method="post">
+    <label for="title">Title<span class="required">*</span> : </label>
+    <input type="text" name="title" id="title " value="<%=params['title']%>" /><br /><br />
+    <label for="url">URL<span class="required">*</span> : </label>
+    <input type="text" name="url" id="url" value="<%=params['url']%>" /><br /><br />
+    <label for="description">Description (min. 20 characters)<span class="required">*</span> : </label><br />
+    <textarea name="description" id="description" rows="10" cols="50" /><%=params['description']%></textarea><br /><br />
+    <input type="submit" value="Submit">
+  </form>
+
+</div>
